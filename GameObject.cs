@@ -46,7 +46,7 @@ namespace GDIgame
             {
                 foreach(LockedDoor d in myRoom.Objects)
                 {
-
+                    d.active = false;
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace GDIgame
     class LockedDoor : GameObject
     {
         public static new Image sprite = Image.FromFile("LockedDoor.bmp");
-        bool active = true;
+        public bool active = true;
     }
 
     class Enemy: GameObject
@@ -71,8 +71,23 @@ namespace GDIgame
 
     class Switch : GameObject
     {
-        public static new Image sprite = Image.FromFile("Button.bmp");
+        public static new Image sprite = Image.FromFile("Button_Up.bmp");
+        public static Image sprite2 = Image.FromFile("Button_Down.bmp");
+        public bool pressed = false;
+
+        public override void Step()
+        {
+            if (myRoom.player.x == x && myRoom.player.y == y) pressed = true;
+        }
+
+        public override void Draw(Graphics g)
+        {
+            if (pressed) g.DrawImage(sprite2, new Point(x * 32, y * 32));
+            else g.DrawImage(sprite, new Point(x * 32, y * 32));
+        }
     }
+
+
     class PacmanGhost : Enemy
     {
         //later, we will diversify this into different colours of ghost who use different movement strategies
@@ -82,7 +97,7 @@ namespace GDIgame
 
         public override void Step()
         {
-            if (CheckMove())
+            if (CheckMove(dir))
             {
                 //needs improvement. ghost should consider every possible turn, not just the turns it has to make
                 MoveForward();
@@ -113,9 +128,9 @@ namespace GDIgame
             }
         }
 
-        public bool CheckMove()
+        public bool CheckMove(direction d)
         {
-            switch (dir)
+            switch (d)
             {
                 case direction.up:
                     if (myRoom.walls[x, y - 1] == false) return true;
@@ -134,9 +149,79 @@ namespace GDIgame
             return false;
         }
 
+        public void ReverseDirection()
+        {
+            switch (dir)
+            {
+                case direction.up:
+                    dir = direction.down;
+                    break;
+                case direction.down:
+                    dir = direction.up;
+                    break;
+                case direction.left:
+                    dir = direction.right;
+                    break;
+                case direction.right:
+                    dir = direction.left;
+                    break;
+            }
+        }
+
         public void NewDirection()
         {
+            if (dir == direction.up || dir == direction.down)
+            {
+                //pick a direction between left and right
+                if (Dungeon.R.Next(2) == 1)
+                {
+                    //check left first
+                    if (CheckMove(direction.left)) dir = direction.left;
+                    else
+                    {
+                        if (CheckMove(direction.right)) dir = direction.right;
+                        else ReverseDirection();    //we can always go back the way we came
+                    }
 
+
+                }
+                else
+                {
+                    //check right first
+                    if (CheckMove(direction.right)) dir = direction.right;
+                    else
+                    {
+                        if (CheckMove(direction.left)) dir = direction.left;
+                        else ReverseDirection();    //we can always go back the way we came
+                    }
+                }
+            }
+            else
+            {
+                if (Dungeon.R.Next(2) == 1)
+
+                {
+                    //check up first
+                    if (CheckMove(direction.up)) dir = direction.up;
+                    else
+                    {
+                        if (CheckMove(direction.down)) dir = direction.down;
+                        else ReverseDirection();    //we can always go back the way we came
+                    }
+
+
+                }
+                else
+                {
+                    //check down first
+                    if (CheckMove(direction.down)) dir = direction.down;
+                    else
+                    {
+                        if (CheckMove(direction.up)) dir = direction.up;
+                        else ReverseDirection();    //we can always go back the way we came
+                    }
+                }
+            }
         }
     }
 }

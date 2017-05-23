@@ -10,7 +10,7 @@ namespace GDIgame
     class Player : GameObject
     {
         public Dungeon dungeon;
-        //player is one of the only object that exists at dungeon level, not room level
+        //player is one of the only objects that exists at dungeon level, not room level
         public Player()
         {
             sprite = Image.FromFile("Player.bmp");

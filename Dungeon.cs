@@ -36,7 +36,11 @@ namespace GDIgame
         {
             PhiDungeon();
             LinkRooms();
-
+            
+            foreach (Room r in Rooms)
+            {
+                r.player = player;
+            }
         }
 
         public void LinkRooms() //This method establishes the door geometry of the dungeon onto the individual rooms
