@@ -41,24 +41,24 @@ namespace GDIgame
                         walls[17 - (2 * l) - x, 17 - (2 * l)] = true;
                     }
                 }
-                //the inner room is special
-                walls[8, 8] = true;
-                walls[9, 8] = true;
-                walls[11, 8] = true;
-                walls[8, 10] = true;
-                walls[8, 11] = true;
-                walls[11, 11] = true;
-                walls[11, 9] = true;
-                walls[10, 11] = true;
-
-
-                //the inner layer should contain 4 ghosts, pointing out the hallways
-                Create(new PacmanGhost(), 9, 9,this);
-                Create(new PacmanGhost(), 9, 10,this);
-                Create(new PacmanGhost(), 10, 9,this);
-                Create(new PacmanGhost(), 10, 10,this);
-                //place the switches
             }
+            //the inner room is special
+            walls[8, 8] = true;
+            walls[9, 8] = true;
+            walls[11, 8] = true;
+            walls[8, 10] = true;
+            walls[8, 11] = true;
+            walls[11, 11] = true;
+            walls[11, 9] = true;
+            walls[10, 11] = true;
+
+
+            //the inner layer should contain 4 ghosts, pointing out the hallways
+            Create(new PacmanGhost(), 9, 9);
+            Create(new PacmanGhost(), 9, 10);
+            Create(new PacmanGhost(), 10, 9);
+            Create(new PacmanGhost(), 10, 10);
+            //place the switches
 
         }
     }

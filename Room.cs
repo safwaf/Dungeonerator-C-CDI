@@ -66,11 +66,11 @@ namespace GDIgame
             }
         }
 
-        public void Create(GameObject o,int x, int y, Room room)
+        public void Create(GameObject o,int x, int y)
         {
             //pass a new object into this function to get it set up in one command.
-            room.Objects.Add(o);
-            o.myRoom = room;
+            Objects.Add(o);
+            o.myRoom = this;
             o.x = x;
             o.y = y;
             o.Create();
