@@ -15,14 +15,9 @@ namespace GDIgame
         public int y;
         public Image sprite;
         public Room myRoom;//we use myRoom to access the other objects in the room
-
-        public GameObject()
+        public virtual void Create()
         {
-
-        }
-        public void LinkRoom(Room r)
-        {
-            myRoom = r;
+            //this gets called when an object is created. 
         }
         public virtual void Step()
         {
@@ -31,7 +26,7 @@ namespace GDIgame
         public virtual void Draw(Graphics g)
         {
             //if necessary put extra drawing code here. by default, draws sprite
-            g.DrawImage(sprite, new Point(x * 32, y * 32));
+            if (sprite != null) g.DrawImage(sprite, new Point(x * 32, y * 32));
         }
     }
 
@@ -92,8 +87,23 @@ namespace GDIgame
     {
         //later, we will diversify this into different colours of ghost who use different movement strategies
 
-        public static new Image sprite = Image.FromFile("Ghost.bmp");
+        public static Image mySprite = Image.FromFile("Ghost.bmp");
         public direction dir;   //try to set the direction when creating, so it makes sense
+
+        public override void Create()
+        {
+            sprite = PacmanGhost.mySprite;
+            if (x==9)
+            {
+                if (y == 9) dir = direction.left;
+                else dir = direction.down;
+            }
+            else
+            {
+                if (y == 9) dir = direction.up;
+                else dir = direction.right;
+            }
+        }
 
         public override void Step()
         {

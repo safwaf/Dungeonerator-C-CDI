@@ -10,7 +10,7 @@ namespace GDIgame
     class Room
     {
 
-        Image wallSprite = Image.FromFile("Wall.bmp");
+        static Image wallSprite = Image.FromFile("Wall.bmp");
         public static int width = 20;       //make these even!
         public static int height = 20;
         public bool[,] walls = new bool[width, height];
@@ -25,21 +25,11 @@ namespace GDIgame
             //this never gets overridden. for custom room code, use CreateRoom
             BasicWalls();
             CreateRoom();
-            LinkObjects();
         }
 
         public virtual void CreateRoom()
         {   
             //This gets overridden in specific room types. All that should be different between room types is the setup code
-        }
-
-
-        public void LinkObjects()
-        {
-            foreach (GameObject o in Objects)
-            {
-                o.LinkRoom(this);
-            }
         }
 
         public void DrawRoom(Graphics g)
@@ -74,6 +64,17 @@ namespace GDIgame
             {
                 o.Step();
             }
+        }
+
+        public void Create(GameObject o,int x, int y, Room room)
+        {
+            //pass a new object into this function to get it set up in one command.
+            room.Objects.Add(o);
+            o.myRoom = room;
+            o.x = x;
+            o.y = y;
+            o.Create();
+            
         }
 
         void BasicWalls()   //this method frames the room with walls. every room will call this method
