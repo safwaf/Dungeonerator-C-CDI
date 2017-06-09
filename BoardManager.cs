@@ -15,7 +15,6 @@ namespace GDIgame
         Player player = new Player();
         public BoardManager()
         {
-
         }
 
         public void DrawProcess(Graphics g)

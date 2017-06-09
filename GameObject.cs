@@ -32,16 +32,24 @@ namespace GDIgame
 
     class Control : GameObject
     {
+       
         //this is the base for control objects.
         //every room type has it's own control object that decides when to open the locked doors
+
+        public List<LockedDoor> DoorsList = new List<LockedDoor>();
+        public bool RoomComplete = false;
+
         public override void Step()
         {
             //do not override this, or the doors will never open
-            if (CheckCriteria())
+            if (!RoomComplete)
             {
-                foreach(LockedDoor d in myRoom.Objects)
+                if (CheckCriteria())
                 {
-                    d.active = false;
+                    foreach (LockedDoor d in DoorsList)
+                    {
+                        d.active = false;
+                    }
                 }
             }
         }
@@ -55,8 +63,12 @@ namespace GDIgame
 
     class LockedDoor : GameObject
     {
-        public static new Image sprite = Image.FromFile("LockedDoor.bmp");
+        public static Image mySprite = Image.FromFile("LockedDoor.bmp");
         public bool active = true;
+        public LockedDoor()
+        {
+            sprite = mySprite;
+        }
     }
 
     class Enemy: GameObject
@@ -109,7 +121,30 @@ namespace GDIgame
         {
             if (CheckMove(dir))
             {
-                //needs improvement. ghost should consider every possible turn, not just the turns it has to make
+                if (dir==direction.up || dir==direction.down)   //we're moving vertically
+                {
+                    switch (Dungeon.R.Next(3))
+                    {
+                        case 2:
+                            if (CheckMove(direction.left)) dir = direction.left;
+                            break;
+                        case 1:
+                            if (CheckMove(direction.right)) dir = direction.right;
+                            break;
+                    }
+                }
+                else    //we're moving horizontally
+                {
+                    switch (Dungeon.R.Next(3))
+                    {
+                        case 2:
+                            if (CheckMove(direction.up)) dir = direction.up;
+                            break;
+                        case 1:
+                            if (CheckMove(direction.down)) dir = direction.down;
+                            break;
+                    }
+                }
                 MoveForward();
             }
             else
@@ -143,16 +178,16 @@ namespace GDIgame
             switch (d)
             {
                 case direction.up:
-                    if (myRoom.walls[x, y - 1] == false) return true;
+                    if (myRoom.walls[x, y - 1] == false && y!=1) return true;
                     break;
                 case direction.down:
-                    if (myRoom.walls[x, y + 1] == false) return true;
+                    if (myRoom.walls[x, y + 1] == false && y != 18) return true;
                     break;
                 case direction.left:
-                    if (myRoom.walls[x-1, y] == false) return true;
+                    if (myRoom.walls[x-1, y] == false && x != 1) return true;
                     break;
                 case direction.right:
-                    if (myRoom.walls[x+1,y] == false) return true;
+                    if (myRoom.walls[x+1,y] == false && x != 18) return true;
                     break;
             }
             //otherwise, return false

@@ -1,0 +1,19 @@
+Pacman room:
+Homage to pacman, it is a pacman maze style room full of switches. the pellets are replaced with switches which must all be pressed to complete the room. Ghosts roam the corridors and try to kill the player
+
+Enemies+auras room:
+the room contains randomly placed "Auras" and enemies. Upon passing through an aura, the enemy changes colors, and each color represents a unique behaviour pattern. utilizing these behaviour patterns, the player must make the enemies simultaneously activate all switches in the room
+behaviours:
+walk towards the player
+walk away from the player
+move same direction as player
+move opposite direction from player
+perhaps more
+
+"Lights Out" room:
+The classic "Lights out" puzzle. All switches are initially set to lit or unlit and toggling one also toggles all adjacent switches. turn all the switches on to complete the room
+-to generate, simply start with all lights off and apply a random binary matrix of operations
+
+
+
+

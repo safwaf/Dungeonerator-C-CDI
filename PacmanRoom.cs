@@ -52,14 +52,22 @@ namespace GDIgame
             walls[11, 9] = true;
             walls[10, 11] = true;
 
+            //place the switches
+            for (int x=1;x<19;x++)
+            {
+            for (int y=1;y<19;y++)
+                {
+                    if (x % 2 == y % 2) Create(new Switch(), x, y);
+                }
+            }
 
             //the inner layer should contain 4 ghosts, pointing out the hallways
             Create(new PacmanGhost(), 9, 9);
             Create(new PacmanGhost(), 9, 10);
             Create(new PacmanGhost(), 10, 9);
             Create(new PacmanGhost(), 10, 10);
-            //place the switches
 
+            Create(new PacmanControl(), 0, 0);
         }
     }
     class PacmanControl : Control

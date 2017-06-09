@@ -79,6 +79,7 @@ namespace GDIgame
                             Rooms[Layout[x, y]].walls[9, 19] = true;
                             Rooms[Layout[x, y]].walls[10, 19] = true;
                         }
+                        Rooms[Layout[x, y]].PlaceDoors();
 
                     }
                 }

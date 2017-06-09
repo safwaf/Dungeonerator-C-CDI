@@ -92,5 +92,29 @@ namespace GDIgame
             }
         }
 
+        public void PlaceDoors()
+        {
+            if (walls[0,9] == false)
+            {
+                Create(new LockedDoor(), 0, 9);
+                Create(new LockedDoor(), 0, 10);
+            }
+            if (walls[19, 9] == false)
+            {
+                Create(new LockedDoor(), 19, 9);
+                Create(new LockedDoor(), 19, 10);
+            }
+            if (walls[9, 0] == false)
+            {
+                Create(new LockedDoor(), 9, 0);
+                Create(new LockedDoor(), 10, 0);
+            }
+            if (walls[0, 9] == false)
+            {
+                Create(new LockedDoor(), 9, 0);
+                Create(new LockedDoor(), 10, 0);
+            }
+        }
+
     }
 }
