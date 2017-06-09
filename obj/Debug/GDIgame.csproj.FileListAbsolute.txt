@@ -7,3 +7,12 @@ c:\users\tyson geib\documents\visual studio 2017\Projects\GDIgame\GDIgame\obj\De
 c:\users\tyson geib\documents\visual studio 2017\Projects\GDIgame\GDIgame\obj\Debug\GDIgame.exe
 c:\users\tyson geib\documents\visual studio 2017\Projects\GDIgame\GDIgame\obj\Debug\GDIgame.pdb
 C:\Users\Tyson Geib\documents\visual studio 2017\Projects\GDIgame\GDIgame\obj\Debug\GDIgame.Form1.resources
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\bin\Debug\GDIgame.exe.config
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\bin\Debug\GDIgame.exe
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\bin\Debug\GDIgame.pdb
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\obj\Debug\GDIgame.csprojResolveAssemblyReference.cache
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\obj\Debug\GDIgame.Form1.resources
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\obj\Debug\GDIgame.Properties.Resources.resources
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\obj\Debug\GDIgame.csproj.GenerateResource.Cache
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\obj\Debug\GDIgame.exe
+C:\Users\Tyson Geib\Documents\Visual Studio 2017\Projects\Dungeonerator-C-CDI\obj\Debug\GDIgame.pdb
