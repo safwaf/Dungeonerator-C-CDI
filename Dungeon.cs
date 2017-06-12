@@ -115,7 +115,7 @@ namespace GDIgame
 
             for (int i = center_y + 1; i < 9; i++)    //Bottom wing
             {
-                Rooms.Add(new PacmanRoom());
+                Rooms.Add(new LightsOutRoom());
                 Layout[center_x, i] = roominc;
                 roominc++;
             }
