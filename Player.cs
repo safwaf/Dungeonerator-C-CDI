@@ -17,6 +17,11 @@ namespace GDIgame
             sprite = mySprite;
         }
 
+        public override void Draw(Graphics g)
+        {
+            g.DrawEllipse(new Pen(Color.Red), x*32, y*32, 32, 32);
+        }
+
         public void MoveUp()
         {
             if (y==0)

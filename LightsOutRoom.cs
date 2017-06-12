@@ -15,6 +15,7 @@ namespace GDIgame
 
         public override void CreateRoom()
         {
+            Create(board);
             LightsOutPanel current;
             for (int i = 0; i < 8; i++)
             {
@@ -24,7 +25,11 @@ namespace GDIgame
                     current.bx = i;
                     current.by = j;
                     current.board = board;
-                    Create(current, (2 * i) + 1, (2 * j) + 1);
+                    Create(current);
+                    if (i < 4) current.x = 2 * i + 2;
+                    else current.x = 2 * i + 3;
+                    if (j < 4) current.y = 2 * j + 2;
+                    else current.y = 2 * j + 3;
 
                 }
             }

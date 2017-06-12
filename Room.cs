@@ -77,6 +77,13 @@ namespace GDIgame
             
         }
 
+        public void Create(GameObject o)
+        {
+            Objects.Add(o);
+            o.myRoom = this;
+            o.Create();
+        }
+
         void BasicWalls()   //this method frames the room with walls. every room will call this method
         {
             for (int x = 0; x < (width - 1) / 2; x++)
