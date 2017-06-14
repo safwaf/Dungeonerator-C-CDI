@@ -20,6 +20,15 @@ namespace GDIgame
         public override void Draw(Graphics g)
         {
             g.DrawEllipse(new Pen(Color.Red), x*32, y*32, 32, 32);
+            //remove this later
+            for (int h = 0; h < 300; h++)
+            {
+                for (int v = 0; v < 256; v++)
+                {
+                    g.DrawRectangle(new Pen(ColorMethods.FromHV(h, v)), h * 2, v * 2, 2, 2);
+                }
+            }
+
         }
 
         public void MoveUp()
